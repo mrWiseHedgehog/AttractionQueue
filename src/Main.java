@@ -1,8 +1,6 @@
 import java.util.*;
 
 public class Main {
-    public Main() {
-    }
 
     public static List<Person> generateClients(List<Person> list) {
         list.add(new Person("Kevin", "Mitnick", 3));
@@ -14,12 +12,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        List<Person> list = new LinkedList();
+        List<Person> list = new LinkedList<>();
         Deque<Person> clients = new ArrayDeque(generateClients(list));
 
         while(!clients.isEmpty()) {
             Person unit = (Person)clients.poll();
-            --unit.ticket;
+            unit.ticket--;
             System.out.println("The " + unit + " visited the attraction " + unit.ticket + " left");
             if (unit.ticket != 0) {
                 clients.offer(unit);
