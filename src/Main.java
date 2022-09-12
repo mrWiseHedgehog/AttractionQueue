@@ -13,16 +13,16 @@ public class Main {
 
     public static void main(String[] args) {
         List<Person> list = new LinkedList<>();
-        Deque<Person> clients = new ArrayDeque(generateClients(list));
+        Queue<Person> clients = new LinkedList<>(generateClients(list));
 
-        while(!clients.isEmpty()) {
-            Person unit = (Person)clients.poll();
-            unit.ticket--;
-            System.out.println("The " + unit + " visited the attraction " + unit.ticket + " left");
-            if (unit.ticket != 0) {
+        while (!clients.isEmpty()) {
+            Person unit = clients.poll();
+            System.out.println("The " + unit + " visited the attraction " + unit.getTicket() + " left");
+            unit.spendTicket();
+
+            if (unit.getTicket() > 0) {
                 clients.offer(unit);
             }
         }
-
     }
 }
